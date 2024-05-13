@@ -1,0 +1,21 @@
+//subsets
+
+private:
+    void fun(int i, vector<int> vec, vector<int>& nums, vector<vector<int>> &ans){
+        if(i>=nums.size()){
+            ans.push_back(vec);
+            return;
+        }
+        vec.push_back(nums[i]);
+        fun(i+1,vec,nums,ans);
+        vec.pop_back();
+        fun(i+1,vec,nums,ans);
+    }
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        int n = nums.size();
+        vector<vector<int>> ans;
+        vector<int> vec;
+        fun(0,vec,nums,ans);
+        return ans;
+    }
